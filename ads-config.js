@@ -9,8 +9,8 @@ const ADS_CONFIG = {
     socialBarScript: 'https://pl28998205.profitablecpmratenetwork.com/29/10/ba/2910bae02e54e2e031b93c2f4aef90bb.js'
   },
   adsense: {
-    enabled: false,
-    publisherId: 'ca-pub-XXXXXXXXXXXXXXXX'
+    enabled: true,
+    publisherId: 'ca-pub-7098271335538021'
   }
 };
 
