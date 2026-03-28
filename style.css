@@ -145,12 +145,12 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary {
-  background-color: var(--accent-primary);
+  background-color: #527a6d;
   color: #fff;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #5a8877;
+  background-color: #476b60;
 }
 
 .btn-accent {
@@ -657,12 +657,12 @@ details[open] .faq-question::after {
 
 .visitor-counter {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .copyright {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 /* --- Ad Containers --- */

@@ -632,7 +632,7 @@
     localStorage.setItem('gts_visitor_today', todayCount);
     localStorage.setItem('gts_visitor_day', todayKey);
 
-    counterEl.textContent = `Today: ${todayCount.toLocaleString()} \u00B7 Total: ${total.toLocaleString()}`;
+    counterEl.textContent = `\u{1F465} Today: ${todayCount.toLocaleString()} \u00B7 Total: ${total.toLocaleString()}`;
 
     // Try serverless counter if available
     fetchServerCounter(counterEl);
@@ -644,7 +644,7 @@
       if (res.ok) {
         const data = await res.json();
         if (data.today != null && data.total != null) {
-          counterEl.textContent = `Today: ${data.today.toLocaleString()} \u00B7 Total: ${data.total.toLocaleString()}`;
+          counterEl.textContent = `\u{1F465} Today: ${data.today.toLocaleString()} \u00B7 Total: ${data.total.toLocaleString()}`;
         }
       }
     } catch (e) {
