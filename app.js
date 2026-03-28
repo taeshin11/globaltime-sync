@@ -52,11 +52,73 @@
     }
   }
 
+  // --- Region to country code mapping for flags ---
+  const REGION_FLAGS = {
+    'US': '\u{1F1FA}\u{1F1F8}', 'GB': '\u{1F1EC}\u{1F1E7}', 'CA': '\u{1F1E8}\u{1F1E6}',
+    'AU': '\u{1F1E6}\u{1F1FA}', 'NZ': '\u{1F1F3}\u{1F1FF}', 'JP': '\u{1F1EF}\u{1F1F5}',
+    'CN': '\u{1F1E8}\u{1F1F3}', 'HK': '\u{1F1ED}\u{1F1F0}', 'SG': '\u{1F1F8}\u{1F1EC}',
+    'KR': '\u{1F1F0}\u{1F1F7}', 'IN': '\u{1F1EE}\u{1F1F3}', 'AE': '\u{1F1E6}\u{1F1EA}',
+    'TH': '\u{1F1F9}\u{1F1ED}', 'ID': '\u{1F1EE}\u{1F1E9}', 'TW': '\u{1F1F9}\u{1F1FC}',
+    'PH': '\u{1F1F5}\u{1F1ED}', 'PK': '\u{1F1F5}\u{1F1F0}', 'BD': '\u{1F1E7}\u{1F1E9}',
+    'SA': '\u{1F1F8}\u{1F1E6}', 'IR': '\u{1F1EE}\u{1F1F7}', 'MY': '\u{1F1F2}\u{1F1FE}',
+    'FR': '\u{1F1EB}\u{1F1F7}', 'DE': '\u{1F1E9}\u{1F1EA}', 'ES': '\u{1F1EA}\u{1F1F8}',
+    'IT': '\u{1F1EE}\u{1F1F9}', 'NL': '\u{1F1F3}\u{1F1F1}', 'BE': '\u{1F1E7}\u{1F1EA}',
+    'CH': '\u{1F1E8}\u{1F1ED}', 'SE': '\u{1F1F8}\u{1F1EA}', 'RU': '\u{1F1F7}\u{1F1FA}',
+    'TR': '\u{1F1F9}\u{1F1F7}', 'PL': '\u{1F1F5}\u{1F1F1}', 'AT': '\u{1F1E6}\u{1F1F9}',
+    'GR': '\u{1F1EC}\u{1F1F7}', 'PT': '\u{1F1F5}\u{1F1F9}', 'IE': '\u{1F1EE}\u{1F1EA}',
+    'FI': '\u{1F1EB}\u{1F1EE}', 'BR': '\u{1F1E7}\u{1F1F7}', 'AR': '\u{1F1E6}\u{1F1F7}',
+    'MX': '\u{1F1F2}\u{1F1FD}', 'CO': '\u{1F1E8}\u{1F1F4}', 'EG': '\u{1F1EA}\u{1F1EC}',
+    'NG': '\u{1F1F3}\u{1F1EC}', 'ZA': '\u{1F1FF}\u{1F1E6}', 'KE': '\u{1F1F0}\u{1F1EA}',
+    'MA': '\u{1F1F2}\u{1F1E6}', 'GH': '\u{1F1EC}\u{1F1ED}', 'FJ': '\u{1F1EB}\u{1F1EF}'
+  };
+
+  const IANA_TO_COUNTRY = {
+    'America/New_York': 'US', 'America/Chicago': 'US', 'America/Denver': 'US',
+    'America/Los_Angeles': 'US', 'America/Anchorage': 'US', 'America/Phoenix': 'US',
+    'America/Detroit': 'US', 'America/Indiana': 'US', 'America/Boise': 'US',
+    'America/Toronto': 'CA', 'America/Vancouver': 'CA', 'America/Edmonton': 'CA',
+    'America/Winnipeg': 'CA', 'America/Halifax': 'CA', 'America/St_Johns': 'CA',
+    'America/Sao_Paulo': 'BR', 'America/Argentina/Buenos_Aires': 'AR',
+    'America/Mexico_City': 'MX', 'America/Bogota': 'CO',
+    'Europe/London': 'GB', 'Europe/Paris': 'FR', 'Europe/Berlin': 'DE',
+    'Europe/Madrid': 'ES', 'Europe/Rome': 'IT', 'Europe/Amsterdam': 'NL',
+    'Europe/Brussels': 'BE', 'Europe/Zurich': 'CH', 'Europe/Stockholm': 'SE',
+    'Europe/Moscow': 'RU', 'Europe/Istanbul': 'TR', 'Europe/Warsaw': 'PL',
+    'Europe/Vienna': 'AT', 'Europe/Athens': 'GR', 'Europe/Lisbon': 'PT',
+    'Europe/Dublin': 'IE', 'Europe/Helsinki': 'FI',
+    'Asia/Tokyo': 'JP', 'Asia/Shanghai': 'CN', 'Asia/Hong_Kong': 'HK',
+    'Asia/Singapore': 'SG', 'Asia/Seoul': 'KR', 'Asia/Kolkata': 'IN',
+    'Asia/Dubai': 'AE', 'Asia/Bangkok': 'TH', 'Asia/Jakarta': 'ID',
+    'Asia/Taipei': 'TW', 'Asia/Manila': 'PH', 'Asia/Karachi': 'PK',
+    'Asia/Dhaka': 'BD', 'Asia/Riyadh': 'SA', 'Asia/Tehran': 'IR',
+    'Asia/Kuala_Lumpur': 'MY',
+    'Australia/Sydney': 'AU', 'Australia/Melbourne': 'AU', 'Australia/Brisbane': 'AU',
+    'Australia/Perth': 'AU', 'Australia/Adelaide': 'AU',
+    'Pacific/Auckland': 'NZ', 'Pacific/Fiji': 'FJ', 'Pacific/Honolulu': 'US',
+    'Africa/Cairo': 'EG', 'Africa/Lagos': 'NG', 'Africa/Johannesburg': 'ZA',
+    'Africa/Nairobi': 'KE', 'Africa/Casablanca': 'MA', 'Africa/Accra': 'GH'
+  };
+
+  function getCountryCode(iana) {
+    if (IANA_TO_COUNTRY[iana]) return IANA_TO_COUNTRY[iana];
+    // Try to guess from region
+    const region = iana.split('/')[0];
+    if (region === 'US' || iana.includes('America/Indiana') || iana.includes('America/Kentucky')
+        || iana.includes('America/North_Dakota') || iana.includes('Pacific/Honolulu')) return 'US';
+    return '';
+  }
+
+  function getFlag(iana) {
+    const cc = getCountryCode(iana);
+    return REGION_FLAGS[cc] || '\u{1F310}';
+  }
+
   function formatTzLabel(iana) {
     const parts = iana.split('/');
     const city = (parts[parts.length - 1] || '').replace(/_/g, ' ');
-    const region = parts[0] || '';
-    return city + (region ? ', ' + region : '');
+    const cc = getCountryCode(iana);
+    const countryName = cc || parts[0] || '';
+    return city + (countryName ? ', ' + countryName : '');
   }
 
   function getUtcOffset(tz) {
@@ -119,7 +181,7 @@
     highlightedIndex = -1;
     cityDropdown.innerHTML = items.map((item, i) =>
       `<li role="option" data-iana="${item.iana}" data-index="${i}">
-        ${item.label} <span class="tz-offset">${item.offset}</span>
+        ${getFlag(item.iana)} ${item.label} <span class="tz-offset">${item.offset}</span>
       </li>`
     ).join('');
 
@@ -231,15 +293,39 @@
     findMeetingBtn.disabled = cities.length < 2;
   }
 
+  // --- Compute cross-city overlap hours (in UTC) ---
+  function computeOverlapUTCHours() {
+    if (cities.length < 2) return [];
+    const cityUTCSlots = cities.map(city => {
+      const offsetMin = getUtcOffsetMinutes(city.iana);
+      const startH = parseInt(city.workStart.split(':')[0]);
+      const endH = parseInt(city.workEnd.split(':')[0]);
+      const localHours = [];
+      if (startH <= endH) {
+        for (let h = startH; h < endH; h++) localHours.push(h);
+      } else {
+        for (let h = startH; h < 24; h++) localHours.push(h);
+        for (let h = 0; h < endH; h++) localHours.push(h);
+      }
+      return localHours.map(h => (((h * 60 - offsetMin) / 60) % 24 + 24) % 24).map(s => Math.round(s) % 24);
+    });
+    let common = cityUTCSlots[0];
+    for (let i = 1; i < cityUTCSlots.length; i++) {
+      common = common.filter(h => cityUTCSlots[i].includes(h));
+    }
+    return common;
+  }
+
   // --- Render Cities ---
   function renderCities() {
+    const overlapUTCHours = computeOverlapUTCHours();
     cityListEl.innerHTML = cities.map((city, index) => {
       const now = new Date();
       return `
         <div class="city-row" data-iana="${city.iana}" data-index="${index}">
           <div class="city-row-header">
             <div class="city-info">
-              <div class="city-name">${city.label}</div>
+              <div class="city-name">${getFlag(city.iana)} ${city.label}</div>
               <div class="city-meta">${city.iana} &middot; ${getUtcOffset(city.iana)}</div>
             </div>
             <div class="city-clock">
@@ -257,7 +343,7 @@
           </div>
           <div class="timeline-container">
             <div class="timeline-bar" data-timeline="${city.iana}">
-              ${renderTimelineBar(city)}
+              ${renderTimelineBar(city, overlapUTCHours)}
             </div>
             <div class="timeline-labels">
               ${Array.from({ length: 24 }, (_, h) => `<span>${String(h).padStart(2, '0')}</span>`).join('')}
@@ -285,7 +371,7 @@
   window.__removeCity = removeCity;
 
   // --- Timeline Bar ---
-  function renderTimelineBar(city) {
+  function renderTimelineBar(city, overlapUTCHours) {
     const now = new Date();
     const currentHour = parseInt(new Intl.DateTimeFormat('en-US', {
       timeZone: city.iana,
@@ -295,6 +381,12 @@
 
     const workStartH = parseInt(city.workStart.split(':')[0]);
     const workEndH = parseInt(city.workEnd.split(':')[0]);
+
+    // Convert UTC overlap hours to local hours for this city
+    const offsetMin = getUtcOffsetMinutes(city.iana);
+    const overlapLocalHours = (overlapUTCHours || []).map(
+      utcH => Math.round(((utcH * 60 + offsetMin) / 60 + 24) % 24) % 24
+    );
 
     return Array.from({ length: 24 }, (_, h) => {
       const classes = ['timeline-hour'];
@@ -315,6 +407,11 @@
         if (h >= workStartH || h < workEndH) {
           classes.push('working');
         }
+      }
+
+      // Cross-city overlap highlight
+      if (overlapLocalHours.includes(h)) {
+        classes.push('overlap');
       }
 
       // Current hour
@@ -344,10 +441,11 @@
     // Update timeline current hour markers every minute
     const seconds = now.getSeconds();
     if (seconds === 0) {
+      const overlapUTCHours = computeOverlapUTCHours();
       cities.forEach(city => {
         const timelineEl = document.querySelector(`[data-timeline="${city.iana}"]`);
         if (timelineEl) {
-          timelineEl.innerHTML = renderTimelineBar(city);
+          timelineEl.innerHTML = renderTimelineBar(city, overlapUTCHours);
         }
       });
     }
@@ -461,8 +559,8 @@
     }
 
     meetingResultsEl.innerHTML = windows.map((win, i) => {
-      const quality = win.duration >= 4 ? 'perfect' : win.duration >= 2 ? 'limited' : 'limited';
-      const qualityLabel = win.duration >= 4 ? 'Great overlap' : win.duration >= 2 ? 'Limited window' : 'Tight window';
+      const quality = win.duration >= 4 ? 'perfect' : win.duration >= 2 ? 'limited' : 'none';
+      const qualityLabel = win.duration >= 4 ? 'Perfect overlap' : win.duration >= 2 ? 'Limited window' : 'Tight window';
 
       const cityTimesHtml = win.localTimes.map(lt =>
         `<li><strong>${lt.city}:</strong> ${lt.start} – ${lt.end}</li>`
