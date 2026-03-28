@@ -315,6 +315,14 @@ h1, h2, h3, h4 {
   margin-left: 0.5rem;
 }
 
+/* --- Search Error --- */
+.search-error {
+  color: var(--accent-danger);
+  font-size: 0.85rem;
+  margin-top: var(--space-xs);
+  min-height: 1.2em;
+}
+
 /* --- City List --- */
 .city-list {
   display: flex;
@@ -641,10 +649,10 @@ details[open] .faq-question::after {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
   gap: var(--space-sm);
+  text-align: center;
 }
 
 .visitor-counter {
@@ -723,6 +731,12 @@ details[open] .faq-question::after {
 
   .city-row-header {
     align-items: center;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
   }
 }
 

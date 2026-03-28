@@ -179,18 +179,31 @@
     hideDropdown();
   }
 
+  // --- Inline Error Messages ---
+  function showSearchError(msg) {
+    let errEl = document.querySelector('.search-error');
+    if (!errEl) {
+      errEl = document.createElement('div');
+      errEl.className = 'search-error';
+      errEl.setAttribute('role', 'alert');
+      citySearchInput.parentElement.parentElement.appendChild(errEl);
+    }
+    errEl.textContent = msg;
+    setTimeout(() => { errEl.textContent = ''; }, 3000);
+  }
+
   // --- Add / Remove City ---
   function onAddCity() {
     const iana = citySearchInput.dataset.selectedIana;
     if (!iana) return;
 
     if (cities.length >= MAX_CITIES) {
-      alert('Maximum of ' + MAX_CITIES + ' cities allowed.');
+      showSearchError('Maximum of ' + MAX_CITIES + ' cities allowed.');
       return;
     }
 
     if (cities.some(c => c.iana === iana)) {
-      alert('This city is already added.');
+      showSearchError('This city is already added.');
       return;
     }
 
@@ -238,9 +251,9 @@
           </div>
           <div class="working-hours-controls">
             <label>Work hours:</label>
-            <input type="time" value="${city.workStart}" data-field="workStart" data-city-index="${index}" aria-label="Work start time">
+            <input type="time" value="${city.workStart}" data-field="workStart" data-city-index="${index}" aria-label="Work start time for ${city.label}">
             <span>to</span>
-            <input type="time" value="${city.workEnd}" data-field="workEnd" data-city-index="${index}" aria-label="Work end time">
+            <input type="time" value="${city.workEnd}" data-field="workEnd" data-city-index="${index}" aria-label="Work end time for ${city.label}">
           </div>
           <div class="timeline-container">
             <div class="timeline-bar" data-timeline="${city.iana}">
@@ -375,22 +388,17 @@
       const offsetMin = getUtcOffsetMinutes(city.iana);
       const startH = parseInt(city.workStart.split(':')[0]);
       const endH = parseInt(city.workEnd.split(':')[0]);
-      const slots = [];
+      const localHours = [];
 
       if (startH <= endH) {
-        for (let h = startH; h < endH; h++) {
-          slots.push(((h * 60 - offsetMin) / 60 + 48) % 24);
-        }
+        for (let h = startH; h < endH; h++) localHours.push(h);
       } else {
-        for (let h = startH; h < 24; h++) {
-          slots.push(((h * 60 - offsetMin) / 60 + 48) % 24);
-        }
-        for (let h = 0; h < endH; h++) {
-          slots.push(((h * 60 - offsetMin) / 60 + 48) % 24);
-        }
+        for (let h = startH; h < 24; h++) localHours.push(h);
+        for (let h = 0; h < endH; h++) localHours.push(h);
       }
 
-      return slots.map(s => Math.round(s) % 24);
+      // Convert local hours to UTC: utcHour = localHour - offset
+      return localHours.map(h => (((h * 60 - offsetMin) / 60) % 24 + 24) % 24).map(s => Math.round(s) % 24);
     });
 
     // Find common UTC hours
@@ -460,7 +468,7 @@
         `<li><strong>${lt.city}:</strong> ${lt.start} – ${lt.end}</li>`
       ).join('');
 
-      const copyText = win.localTimes.map(lt => `${lt.city}: ${lt.start} – ${lt.end}`).join('\n');
+      const copyText = win.localTimes.map(lt => `${lt.city}: ${lt.start} \u2013 ${lt.end}`).join('\n');
 
       return `
         <div class="meeting-result-card">
@@ -468,21 +476,24 @@
           <div class="result-time-range">UTC ${formatHour(win.utcStart)} – ${formatHour(win.utcEnd)}</div>
           <ul class="result-city-times">${cityTimesHtml}</ul>
           <div class="result-actions">
-            <button class="btn btn-sm btn-copy" onclick="window.__copyResult(this, \`${copyText.replace(/`/g, '\\`')}\`)">Copy to clipboard</button>
+            <button class="btn btn-sm btn-copy" data-copy="${copyText.replace(/"/g, '&quot;')}" aria-live="polite">Copy to clipboard</button>
           </div>
         </div>`;
     }).join('');
   }
 
-  window.__copyResult = function (btn, text) {
-    navigator.clipboard.writeText(text).then(() => {
+  // Copy button event delegation
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+    navigator.clipboard.writeText(btn.dataset.copy).then(() => {
       btn.textContent = 'Copied!';
       setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
     }).catch(() => {
       btn.textContent = 'Failed';
       setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
     });
-  };
+  });
 
   // --- Google Sheets POST ---
   async function postToGoogleSheets(overlaps) {
