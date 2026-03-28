@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use & FAQ — GlobalTime Sync | Guide</title>
+  <meta name="description" content="Learn how to use GlobalTime Sync to compare time zones and schedule meetings across cities. Step-by-step guide and frequently asked questions.">
+  <meta name="keywords" content="how to use time zone converter, meeting scheduler guide, compare time zones, schedule global meetings, time zone FAQ">
+  <meta name="author" content="GlobalTime Sync">
+  <link rel="canonical" href="https://globaltime-sync.vercel.app/how-to-use.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How to Use & FAQ — GlobalTime Sync">
+  <meta property="og:description" content="Step-by-step guide on using GlobalTime Sync to compare time zones and find the best meeting time.">
+  <meta property="og:image" content="https://globaltime-sync.vercel.app/og-image.svg">
+  <meta property="og:url" content="https://globaltime-sync.vercel.app/how-to-use.html">
+  <meta property="og:site_name" content="GlobalTime Sync">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Use & FAQ — GlobalTime Sync">
+  <meta name="twitter:description" content="Step-by-step guide on using GlobalTime Sync to compare time zones and find the best meeting time.">
+  <meta name="twitter:image" content="https://globaltime-sync.vercel.app/og-image.svg">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I add a city to compare time zones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Type the city name or IANA time zone identifier (like 'America/New_York') into the search bar. Select the correct result from the dropdown, then click '+ Add City'. The city will appear with a live clock and 24-hour timeline bar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many cities can I compare at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can compare up to 10 cities simultaneously. Each city displays a live clock with hours, minutes, and seconds, the current date, UTC offset, and a visual 24-hour timeline bar showing working hours and night hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the meeting overlap finder work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The overlap finder converts each city's working hours to UTC, finds the hours that are within working time for ALL selected cities, and groups them into contiguous time windows. Results are sorted by duration, with the longest overlap shown first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does GlobalTime Sync handle Daylight Saving Time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. GlobalTime Sync uses the browser's built-in Intl API, which references the IANA time zone database. This database is regularly updated to reflect the latest Daylight Saving Time rules for every country and region."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is GlobalTime Sync free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, GlobalTime Sync is completely free with no sign-up required. All features — including city comparison, live clocks, timeline visualization, and the meeting overlap finder — are available to everyone at no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize working hours for each city?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Each city row has adjustable working hour inputs. The default is 09:00 to 18:00, but you can change the start and end times for any city to match that team's actual schedule, including overnight shifts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What browsers are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GlobalTime Sync works on all modern browsers including Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge. It requires JavaScript to be enabled. The Intl.supportedValuesOf API is supported in Chrome 93+, Firefox 93+, Safari 15.4+, and Edge 93+."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share the meeting time results with my team?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After finding the best meeting time, each result card has a 'Copy to clipboard' button. Click it to copy all the local times in a formatted text block that you can paste into email, Slack, Teams, or any messaging app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does GlobalTime Sync store my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GlobalTime Sync runs entirely in your browser. City selections and working hour preferences are stored only in your current session and are not saved to any server. We do not collect personal information or require account creation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What time zones are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GlobalTime Sync supports all IANA time zones — over 400 entries covering every country and region in the world. This includes cities from major metropolitan areas as well as smaller regions with unique UTC offsets like Kathmandu (UTC+5:45) and Chatham Islands (UTC+12:45)."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo-area">
+        <a href="/" class="logo-link">
+          <h1 class="logo">
+            <span class="logo-icon" aria-hidden="true">&#127760;</span>
+            GlobalTime Sync
+          </h1>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/about.html">About</a>
+          <a href="/how-to-use.html" aria-current="page">How to Use</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article class="page-content">
+      <div class="container">
+        <h2 class="page-title">How to Use GlobalTime Sync</h2>
+
+        <section class="content-section">
+          <p>GlobalTime Sync is designed to be intuitive — most users figure it out within seconds. But if you want to get the most out of every feature, here's a complete walkthrough.</p>
+        </section>
+
+        <section class="content-section step-section">
+          <h3>Step 1: Search and Add Cities</h3>
+          <p>Start by typing a city name, country, or IANA time zone identifier into the search bar at the top of the dashboard. For example, you can type:</p>
+          <ul class="content-list">
+            <li><strong>"Tokyo"</strong> — finds Asia/Tokyo</li>
+            <li><strong>"New York"</strong> — finds America/New_York</li>
+            <li><strong>"London"</strong> — finds Europe/London</li>
+            <li><strong>"UTC+5:30"</strong> or <strong>"Kolkata"</strong> — finds Asia/Kolkata (India Standard Time)</li>
+          </ul>
+          <p>As you type, a dropdown appears with matching results showing the city name, country flag, and UTC offset. Click on the correct entry, then press the <strong>"+ Add City"</strong> button. The city will appear as a new row on the dashboard with a live clock and timeline bar.</p>
+          <p>You can add up to <strong>10 cities</strong> at once. Duplicate cities are automatically prevented.</p>
+        </section>
+
+        <section class="content-section step-section">
+          <h3>Step 2: Visualize and Customize Working Hours</h3>
+          <p>Each city row displays three key pieces of information:</p>
+          <ul class="content-list">
+            <li><strong>Live Clock</strong> — Shows the current time (HH:MM:SS), date, and UTC offset, updating every second.</li>
+            <li><strong>24-Hour Timeline Bar</strong> — A horizontal bar representing the full 24-hour day. Night hours (10 PM – 6 AM) appear darker, working hours appear in green, and the current hour is highlighted with a distinct marker.</li>
+            <li><strong>Working Hours Controls</strong> — Two time inputs let you set custom start and end times for each city's workday. The default is 09:00 to 18:00, but you can adjust this for teams with non-standard hours or overnight shifts.</li>
+          </ul>
+          <p>When you have 2 or more cities added, the timeline bars will also show <strong>overlap highlighting</strong> — a stronger green shade on hours where all cities' working hours intersect. This gives you an instant visual read on when everyone is available.</p>
+        </section>
+
+        <section class="content-section step-section">
+          <h3>Step 3: Find the Best Meeting Time</h3>
+          <p>Once you've added at least 2 cities and adjusted working hours (if needed), click the <strong>"Find Best Meeting Time"</strong> button in the Meeting Overlap Finder section.</p>
+          <p>The algorithm will:</p>
+          <ol class="content-list">
+            <li>Convert each city's working hours to UTC</li>
+            <li>Find all hours that fall within every city's working time</li>
+            <li>Group contiguous hours into time windows</li>
+            <li>Sort by duration (longest overlap first)</li>
+            <li>Display each window with local times for every city</li>
+          </ol>
+          <p>Each result card shows:</p>
+          <ul class="content-list">
+            <li>A <strong>quality indicator</strong> — "Perfect overlap" (4+ hours), "Limited window" (2-3 hours), or "Tight window" (1 hour)</li>
+            <li>The <strong>UTC time range</strong></li>
+            <li>The <strong>local time</strong> for each city</li>
+            <li>A <strong>"Copy to clipboard"</strong> button to share the results instantly</li>
+          </ul>
+          <p>If no overlapping hours exist, the tool will display a clear message suggesting you adjust working hours or reduce the number of cities.</p>
+        </section>
+
+        <section class="content-section">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary class="faq-question">How do I add a city to compare time zones?</summary>
+              <p class="faq-answer">Type the city name or IANA time zone identifier (like "America/New_York") into the search bar. Select the correct result from the dropdown, then click "+ Add City". The city will appear with a live clock and 24-hour timeline bar.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How many cities can I compare at once?</summary>
+              <p class="faq-answer">You can compare up to 10 cities simultaneously. Each city displays a live clock with hours, minutes, and seconds, the current date, UTC offset, and a visual 24-hour timeline bar showing working hours and night hours.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">How does the meeting overlap finder work?</summary>
+              <p class="faq-answer">The overlap finder converts each city's working hours to UTC, finds the hours that are within working time for ALL selected cities, and groups them into contiguous time windows. Results are sorted by duration, with the longest overlap shown first. The algorithm correctly handles edge cases like overnight shifts and half-hour UTC offsets.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Does GlobalTime Sync handle Daylight Saving Time?</summary>
+              <p class="faq-answer">Yes. GlobalTime Sync uses the browser's built-in Intl API, which references the IANA time zone database. This database is regularly updated to reflect the latest Daylight Saving Time rules for every country and region, so you always see accurate times.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Is GlobalTime Sync free to use?</summary>
+              <p class="faq-answer">Yes, GlobalTime Sync is completely free with no sign-up required. All features — including city comparison, live clocks, timeline visualization, and the meeting overlap finder — are available to everyone at no cost. We sustain the project through non-intrusive advertising.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Can I customize working hours for each city?</summary>
+              <p class="faq-answer">Yes. Each city row has adjustable working hour inputs. The default is 09:00 to 18:00, but you can change the start and end times for any city to match that team's actual schedule. The tool even supports overnight shifts (e.g., 22:00 to 06:00).</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What browsers are supported?</summary>
+              <p class="faq-answer">GlobalTime Sync works on all modern browsers including Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge. It requires JavaScript to be enabled. For the best experience, we recommend using the latest version of your browser.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Can I share the meeting time results with my team?</summary>
+              <p class="faq-answer">Absolutely. After finding the best meeting time, each result card has a "Copy to clipboard" button. Click it to copy all the local times in a formatted text block that you can paste into email, Slack, Microsoft Teams, or any messaging application.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">Does GlobalTime Sync store my data?</summary>
+              <p class="faq-answer">GlobalTime Sync runs entirely in your browser. City selections and working hour preferences are stored only in your current session and are not saved to any server. We do not collect personal information, require account creation, or sell user data.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">What time zones are available?</summary>
+              <p class="faq-answer">GlobalTime Sync supports all IANA time zones — over 400 entries covering every country and region in the world. This includes major metropolitan areas as well as regions with unique UTC offsets like Nepal (UTC+5:45), Iran (UTC+3:30), and the Chatham Islands (UTC+12:45).</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/about.html">About Us</a>
+          <a href="/how-to-use.html">How to Use & FAQ</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
+        <p class="copyright">&copy; 2025 GlobalTime Sync. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

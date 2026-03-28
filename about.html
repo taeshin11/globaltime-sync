@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — GlobalTime Sync | Free Time Zone Converter</title>
+  <meta name="description" content="Learn about GlobalTime Sync, a free time zone converter and meeting scheduler built for remote teams working across multiple time zones.">
+  <meta name="keywords" content="about GlobalTime Sync, time zone converter, meeting scheduler, remote team tools, world clock, free timezone tool">
+  <meta name="author" content="GlobalTime Sync">
+  <link rel="canonical" href="https://globaltime-sync.vercel.app/about.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Us — GlobalTime Sync">
+  <meta property="og:description" content="Learn about GlobalTime Sync, a free time zone converter and meeting scheduler built for remote teams.">
+  <meta property="og:image" content="https://globaltime-sync.vercel.app/og-image.svg">
+  <meta property="og:url" content="https://globaltime-sync.vercel.app/about.html">
+  <meta property="og:site_name" content="GlobalTime Sync">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Us — GlobalTime Sync">
+  <meta name="twitter:description" content="Learn about GlobalTime Sync, a free time zone converter and meeting scheduler built for remote teams.">
+  <meta name="twitter:image" content="https://globaltime-sync.vercel.app/og-image.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo-area">
+        <a href="/" class="logo-link">
+          <h1 class="logo">
+            <span class="logo-icon" aria-hidden="true">&#127760;</span>
+            GlobalTime Sync
+          </h1>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/about.html" aria-current="page">About</a>
+          <a href="/how-to-use.html">How to Use</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article class="page-content">
+      <div class="container">
+        <h2 class="page-title">About GlobalTime Sync</h2>
+
+        <section class="content-section">
+          <h3>What Is GlobalTime Sync?</h3>
+          <p>GlobalTime Sync is a free, browser-based time zone converter and meeting scheduler designed specifically for the challenges of modern remote work. In a world where teams are distributed across continents, coordinating meetings, deadlines, and collaborative work sessions requires a clear understanding of how time zones overlap — and where they don't.</p>
+          <p>Unlike bloated calendar apps or paid enterprise tools, GlobalTime Sync provides a focused, distraction-free dashboard where you can instantly compare up to 10 cities side by side. Each city displays a live clock (updating every second), a visual 24-hour timeline bar, and adjustable working hours — giving you everything you need to find the perfect meeting window in seconds, not minutes.</p>
+        </section>
+
+        <section class="content-section">
+          <h3>The Problem We Solve</h3>
+          <p>Remote teams face a recurring pain point: scheduling meetings across time zones. A 2:00 PM meeting in New York is midnight in Tokyo and 7:00 PM in London. Manually converting these times is error-prone, especially when Daylight Saving Time shifts come into play. Most people resort to Googling "time in Tokyo right now" or juggling multiple browser tabs — a frustrating, inefficient workflow.</p>
+          <p>GlobalTime Sync eliminates this friction entirely. By visualizing all your team's time zones on a single screen with clear working-hour overlays, you can see at a glance when everyone is available. The built-in "Find Best Meeting Time" algorithm does the heavy lifting, calculating overlapping work hours and presenting the results in a clean, copy-and-share format.</p>
+        </section>
+
+        <section class="content-section">
+          <h3>Who Is It For?</h3>
+          <ul class="content-list">
+            <li><strong>Remote teams and distributed companies</strong> — Product managers, engineers, designers, and HR professionals who coordinate across offices in different countries.</li>
+            <li><strong>Freelancers and consultants</strong> — Independent professionals who work with clients in multiple time zones and need to propose meeting times that work for everyone.</li>
+            <li><strong>International students and academics</strong> — Students collaborating on group projects across borders, or researchers scheduling conference calls with global peers.</li>
+            <li><strong>Travel planners and digital nomads</strong> — People who move between time zones frequently and need a quick reference for "what time is it back home?"</li>
+            <li><strong>Anyone who has ever asked</strong> — "What time is it in [city] right now?" — and wanted a faster, more visual answer than a search engine provides.</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h3>How It Works — The Technology</h3>
+          <p>GlobalTime Sync is built entirely with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools, no server-side dependencies. This architectural choice means the tool loads almost instantly, works on any modern browser, and requires zero installation.</p>
+          <p>At its core, the app leverages two powerful browser APIs that are available in every modern browser:</p>
+          <ul class="content-list">
+            <li><strong>Intl.supportedValuesOf('timeZone')</strong> — This API provides the complete list of IANA time zone identifiers (over 400 entries), ensuring our city search covers every recognized time zone on Earth without relying on an external database or API call.</li>
+            <li><strong>Intl.DateTimeFormat</strong> — This API handles all time formatting, UTC offset calculation, and — crucially — automatic Daylight Saving Time adjustments. Because the browser's built-in internationalization engine stays current with IANA time zone database updates, GlobalTime Sync always reflects the latest DST rules without needing manual updates.</li>
+          </ul>
+          <p>The meeting overlap algorithm works by converting each city's working hours into UTC-normalized slots, finding the intersection across all selected cities, and then converting the results back to each city's local time. This approach correctly handles edge cases like overnight work shifts and half-hour UTC offsets (e.g., India's UTC+5:30).</p>
+        </section>
+
+        <section class="content-section">
+          <h3>Our Principles</h3>
+          <ul class="content-list">
+            <li><strong>Free forever</strong> — GlobalTime Sync will always be free to use. No sign-ups, no premium tiers, no feature gates.</li>
+            <li><strong>Privacy-first</strong> — We don't track individual users or store personal data. The tool runs entirely in your browser.</li>
+            <li><strong>Fast and lightweight</strong> — No heavy JavaScript frameworks. The entire app loads in under 2 seconds, even on slow connections.</li>
+            <li><strong>Accessible</strong> — Built with semantic HTML, ARIA labels, keyboard navigation, and sufficient color contrast to ensure usability for everyone.</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h3>Get in Touch</h3>
+          <p>Have feedback, feature requests, or found a bug? We'd love to hear from you. GlobalTime Sync is an actively maintained project, and user feedback directly shapes what we build next.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/about.html">About Us</a>
+          <a href="/how-to-use.html">How to Use & FAQ</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
+        <p class="copyright">&copy; 2025 GlobalTime Sync. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
