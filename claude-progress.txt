@@ -1,0 +1,29 @@
+GlobalTime Sync — Progress Log
+================================
+
+Session 1 (2026-03-28):
+- Created all project files: index.html, style.css, app.js, ads-config.js, google-apps-script.js
+- Created harness files: feature_list.json, claude-progress.txt, init.sh
+- Created setup guides: README.md, SETUP_GUIDE.md
+- Created SEO files: sitemap.xml, robots.txt, .gitignore
+- Implemented: SEO meta tags, Open Graph, JSON-LD (WebApplication + FAQPage)
+- Implemented: Soft muted color palette as CSS variables
+- Implemented: Searchable city/timezone dropdown with Intl.supportedValuesOf fallback
+- Implemented: Add/remove city functionality (max 10, duplicate prevention)
+- Implemented: Horizontal 24h timeline bars with night/day/working hour shading
+- Implemented: Live clock display (HH:MM:SS, date, UTC offset) per city
+- Implemented: Working hours overlay + adjustable per city (time inputs)
+- Implemented: Meeting overlap finder algorithm + result display + copy to clipboard
+- Implemented: Google Sheets webhook POST (placeholder URL)
+- Implemented: Adsterra ad slots (banner, native, social bar) + AdSense footer slot
+- Implemented: ads-config.js with placeholder keys
+- Implemented: Visitor counter (localStorage fallback + serverless attempt)
+- Implemented: FAQ section with 6 questions
+- Implemented: Responsive mobile-first layout
+- Completed: F02–F26, F28–F30
+
+Pending:
+- F01: Create GitHub repo via gh CLI
+- F27: Lighthouse score verification
+- F31: Minify CSS/JS for production
+- F32-F35: Deployment to Vercel/Netlify

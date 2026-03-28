@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler</title>
+  <meta name="description" content="Compare time zones across cities instantly. Find the best meeting time for your global team. Free, no sign-up required.">
+  <meta name="keywords" content="time zone converter, meeting scheduler, world clock, time zone comparison, remote team tools, global meeting planner">
+  <meta name="author" content="GlobalTime Sync">
+  <link rel="canonical" href="DEPLOYED_URL">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler">
+  <meta property="og:description" content="Compare time zones across cities instantly. Find the best meeting time for your global team. Free, no sign-up required.">
+  <meta property="og:image" content="DEPLOYED_URL/og-image.png">
+  <meta property="og:url" content="DEPLOYED_URL">
+  <meta property="og:site_name" content="GlobalTime Sync">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler">
+  <meta name="twitter:description" content="Compare time zones across cities instantly. Find the best meeting time for your global team.">
+  <meta name="twitter:image" content="DEPLOYED_URL/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GlobalTime Sync",
+    "alternateName": "Time Zone Converter",
+    "url": "DEPLOYED_URL",
+    "description": "A free, responsive web dashboard that lets remote teams compare multiple time zones at a glance and find the best overlapping meeting window.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "browserRequirements": "Requires a modern browser with JavaScript enabled"
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does GlobalTime Sync work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GlobalTime Sync uses your browser's built-in Intl API to display accurate time zone data for any city in the world. Simply search and add cities to see their current times side by side on an interactive 24-hour timeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is GlobalTime Sync free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, GlobalTime Sync is completely free. There are no sign-ups, subscriptions, or hidden fees. All features are available to everyone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the best meeting time across time zones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add all the cities where your team members are located, adjust working hours if needed, then click 'Find Best Meeting Time'. The tool will calculate overlapping working hours and suggest the best windows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many cities can I compare at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can compare up to 10 cities simultaneously. Each city shows a live clock with hours, minutes, seconds, date, and UTC offset, plus a visual 24-hour timeline bar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does GlobalTime Sync account for Daylight Saving Time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. GlobalTime Sync uses the IANA time zone database through your browser's Intl API, which automatically handles Daylight Saving Time transitions for all supported time zones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share my meeting time results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! After finding the best meeting time, you can use the copy-to-clipboard button to copy the results and share them with your team via email, chat, or any messaging app."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Top Banner Ad (Adsterra) -->
+  <!-- ADSTERRA_BANNER_AD -->
+  <div class="ad-container ad-banner" id="adsterra-banner">
+    <script type="text/javascript">
+      // Adsterra banner ad script will go here
+      // After creating ad unit in Adsterra dashboard:
+      // 1. Go to https://www.adsterra.com -> Publishers -> Ad Units
+      // 2. Create a "Banner" unit (728x90)
+      // 3. Copy the provided script and paste here
+      // atOptions = { 'key': 'ADSTERRA_BANNER_KEY', 'format': 'iframe', 'height': 90, 'width': 728 };
+    </script>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo-area">
+        <h1 class="logo">
+          <span class="logo-icon" aria-hidden="true">&#127760;</span>
+          GlobalTime Sync
+        </h1>
+        <p class="tagline">Compare time zones instantly. Schedule meetings effortlessly.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Introduction">
+      <div class="container">
+        <h2 class="hero-title">Find the Perfect Meeting Time Across Time Zones</h2>
+        <p class="hero-description">Add cities where your team is located, see live clocks side by side, and discover the best overlapping hours for your next meeting — all for free.</p>
+      </div>
+    </section>
+
+    <!-- Time Zone Dashboard -->
+    <section class="dashboard" aria-label="Time Zone Dashboard">
+      <div class="container">
+        <div class="dashboard-header">
+          <h2 class="section-title">Time Zone Dashboard</h2>
+          <div class="city-selector">
+            <div class="search-wrapper">
+              <input
+                type="text"
+                id="city-search"
+                class="city-search-input"
+                placeholder="Search for a city or timezone..."
+                autocomplete="off"
+                aria-label="Search for a city or timezone"
+              >
+              <ul id="city-dropdown" class="city-dropdown" role="listbox" aria-label="City suggestions"></ul>
+            </div>
+            <button id="add-city-btn" class="btn btn-primary" aria-label="Add selected city">
+              <span aria-hidden="true">+</span> Add City
+            </button>
+          </div>
+        </div>
+
+        <div id="city-list" class="city-list" aria-live="polite">
+          <!-- City rows will be inserted here by JS -->
+        </div>
+
+        <!-- Meeting Overlap Finder -->
+        <div class="meeting-finder" id="meeting-finder">
+          <h3 class="subsection-title">Meeting Overlap Finder</h3>
+          <p class="meeting-finder-hint">Add at least 2 cities, then find the best meeting time.</p>
+          <button id="find-meeting-btn" class="btn btn-accent" disabled>
+            Find Best Meeting Time
+          </button>
+          <div id="meeting-results" class="meeting-results" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inline Ad Slot (Adsterra Native) -->
+    <!-- ADSTERRA_NATIVE_AD -->
+    <div class="ad-container ad-native" id="adsterra-native">
+      <!-- Adsterra Social Bar or Native Banner script here -->
+      <!-- Create a "Social Bar" unit in Adsterra for best engagement -->
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">How does GlobalTime Sync work?</summary>
+            <p class="faq-answer">GlobalTime Sync uses your browser's built-in Intl API to display accurate time zone data for any city in the world. Simply search and add cities to see their current times side by side on an interactive 24-hour timeline.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Is GlobalTime Sync free to use?</summary>
+            <p class="faq-answer">Yes, GlobalTime Sync is completely free. There are no sign-ups, subscriptions, or hidden fees. All features are available to everyone.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">How do I find the best meeting time across time zones?</summary>
+            <p class="faq-answer">Add all the cities where your team members are located, adjust working hours if needed, then click "Find Best Meeting Time". The tool will calculate overlapping working hours and suggest the best windows.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">How many cities can I compare at once?</summary>
+            <p class="faq-answer">You can compare up to 10 cities simultaneously. Each city shows a live clock with hours, minutes, seconds, date, and UTC offset, plus a visual 24-hour timeline bar.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Does GlobalTime Sync account for Daylight Saving Time?</summary>
+            <p class="faq-answer">Yes. GlobalTime Sync uses the IANA time zone database through your browser's Intl API, which automatically handles Daylight Saving Time transitions for all supported time zones.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Can I share my meeting time results?</summary>
+            <p class="faq-answer">Yes! After finding the best meeting time, you can use the copy-to-clipboard button to copy the results and share them with your team via email, chat, or any messaging app.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="visitor-counter" id="visitor-counter" aria-label="Visitor count">
+          <!-- Visitor counter will be populated by JS -->
+        </div>
+        <p class="copyright">&copy; 2025 GlobalTime Sync. Free for everyone.</p>
+      </div>
+      <!-- Footer Ad Slot (Future Google AdSense) -->
+      <!-- ADSENSE_FOOTER_AD -->
+      <div class="ad-container ad-footer" id="adsense-footer">
+        <!-- Google AdSense ad unit will go here after approval -->
+        <!-- Replace with your AdSense script when ready -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="ads-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
