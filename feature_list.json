@@ -1,5 +1,5 @@
 [
-  { "id": "F01", "feature": "Create GitHub repo", "milestone": 1, "status": "pending" },
+  { "id": "F01", "feature": "Create GitHub repo", "milestone": 1, "status": "done" },
   { "id": "F02", "feature": "Create index.html, style.css, app.js, README.md", "milestone": 1, "status": "done" },
   { "id": "F03", "feature": "Create feature_list.json, claude-progress.txt, init.sh", "milestone": 1, "status": "done" },
   { "id": "F04", "feature": "Add SEO meta tags, Open Graph, JSON-LD structured data", "milestone": 1, "status": "done" },
@@ -25,13 +25,13 @@
   { "id": "F24", "feature": "Visitor counter integration", "milestone": 6, "status": "done" },
   { "id": "F25", "feature": "Display Today/Total in footer", "milestone": 6, "status": "done" },
   { "id": "F26", "feature": "Fallback localStorage counter", "milestone": 6, "status": "done" },
-  { "id": "F27", "feature": "Lighthouse score >= 90", "milestone": 7, "status": "pending" },
+  { "id": "F27", "feature": "Lighthouse score >= 90", "milestone": 7, "status": "done" },
   { "id": "F28", "feature": "Add sitemap.xml and robots.txt", "milestone": 7, "status": "done" },
   { "id": "F29", "feature": "FAQ section with FAQPage schema", "milestone": 7, "status": "done" },
   { "id": "F30", "feature": "Canonical link and lang attribute", "milestone": 7, "status": "done" },
-  { "id": "F31", "feature": "Minify CSS and JS for production", "milestone": 7, "status": "pending" },
-  { "id": "F32", "feature": "Deploy to Vercel or Netlify", "milestone": 8, "status": "pending" },
-  { "id": "F33", "feature": "Verify features on deployed URL", "milestone": 8, "status": "pending" },
-  { "id": "F34", "feature": "Update README with deployed URL", "milestone": 8, "status": "pending" },
-  { "id": "F35", "feature": "Final git push", "milestone": 8, "status": "pending" }
+  { "id": "F31", "feature": "Minify CSS and JS for production", "milestone": 7, "status": "done" },
+  { "id": "F32", "feature": "Deploy to Vercel or Netlify", "milestone": 8, "status": "done" },
+  { "id": "F33", "feature": "Verify features on deployed URL", "milestone": 8, "status": "done" },
+  { "id": "F34", "feature": "Update README with deployed URL", "milestone": 8, "status": "done" },
+  { "id": "F35", "feature": "Final git push", "milestone": 8, "status": "done" }
 ]
