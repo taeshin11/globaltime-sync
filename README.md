@@ -2,7 +2,7 @@
 
 A free, responsive web dashboard that lets remote teams compare multiple time zones at a glance and find the best overlapping meeting window.
 
-**Live:** [DEPLOYED_URL](DEPLOYED_URL)
+**Live:** [https://globaltime-sync.vercel.app](https://globaltime-sync.vercel.app)
 
 ## Features
 

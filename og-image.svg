@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F4F0"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#6C9A8B"/>
+  <text x="600" y="260" font-family="Georgia, serif" font-size="72" fill="#2D3436" text-anchor="middle" font-weight="bold">GlobalTime Sync</text>
+  <text x="600" y="330" font-family="sans-serif" font-size="28" fill="#636E72" text-anchor="middle">Free Time Zone Converter &amp; Meeting Scheduler</text>
+  <text x="600" y="400" font-family="sans-serif" font-size="22" fill="#B2BEC3" text-anchor="middle">Compare time zones instantly. Find the best meeting time for your global team.</text>
+  <!-- Timeline bar illustration -->
+  <rect x="200" y="460" width="800" height="40" rx="6" fill="#EDE9E3"/>
+  <rect x="200" y="460" width="133" height="40" rx="6" fill="#E8E4E0" opacity="0.7"/>
+  <rect x="333" y="460" width="400" height="40" fill="rgba(108,154,139,0.25)"/>
+  <rect x="533" y="460" width="67" height="40" fill="#6C9A8B" rx="3"/>
+  <text x="566" y="486" font-family="monospace" font-size="16" fill="white" text-anchor="middle">NOW</text>
+  <rect x="867" y="460" width="133" height="40" rx="6" fill="#E8E4E0" opacity="0.7"/>
+</svg>
