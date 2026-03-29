@@ -1,0 +1,26 @@
+{
+  "name": "GlobalTime Sync — Time Zone Converter & Meeting Scheduler",
+  "short_name": "GlobalTime Sync",
+  "description": "Compare time zones across cities instantly. Find the best meeting time for your global team. Free, no sign-up required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F4F0",
+  "theme_color": "#6C9A8B",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+}

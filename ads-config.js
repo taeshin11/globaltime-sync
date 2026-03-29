@@ -67,20 +67,15 @@ function loadAds() {
   }
 
   // Google AdSense Footer Ad
+  // Note: AdSense script is loaded in <head> of HTML pages
+  // Only create the ad slot element here — do NOT load the script again
   if (ADS_CONFIG.adsense.enabled && ADS_CONFIG.adsense.publisherId !== 'ca-pub-XXXXXXXXXXXXXXXX') {
     const footerSlot = document.getElementById('adsense-footer');
     if (footerSlot) {
-      const adsenseScript = document.createElement('script');
-      adsenseScript.async = true;
-      adsenseScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADS_CONFIG.adsense.publisherId;
-      adsenseScript.crossOrigin = 'anonymous';
-      document.head.appendChild(adsenseScript);
-
       const ins = document.createElement('ins');
       ins.className = 'adsbygoogle';
       ins.style.display = 'block';
       ins.setAttribute('data-ad-client', ADS_CONFIG.adsense.publisherId);
-      ins.setAttribute('data-ad-slot', 'ADSENSE_SLOT_ID');
       ins.setAttribute('data-ad-format', 'auto');
       ins.setAttribute('data-full-width-responsive', 'true');
       footerSlot.appendChild(ins);

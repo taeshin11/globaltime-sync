@@ -35,6 +35,17 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
 
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6C9A8B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="GlobalTime Sync">
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="app.js" as="script">
+
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 
@@ -115,6 +126,19 @@
     ]
   }
   </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://globaltime-sync.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://globaltime-sync.vercel.app/about.html" },
+      { "@type": "ListItem", "position": 3, "name": "How to Use", "item": "https://globaltime-sync.vercel.app/how-to-use.html" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Top Banner Ad (Adsterra 728x90 desktop / 320x50 mobile) -->
@@ -136,6 +160,7 @@
           <a href="/" aria-current="page">Home</a>
           <a href="/about.html">About</a>
           <a href="/how-to-use.html">How to Use</a>
+          <a href="/time-zones.html">Time Zones</a>
         </nav>
       </div>
     </div>
@@ -147,6 +172,16 @@
       <div class="container">
         <h2 class="hero-title">Find the Perfect Meeting Time Across Time Zones</h2>
         <p class="hero-description">Add cities where your team is located, see live clocks side by side, and discover the best overlapping hours for your next meeting — all for free.</p>
+        <div class="social-share" aria-label="Share this tool">
+          <span class="share-label">Share with your team:</span>
+          <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=Found%20this%20awesome%20free%20time%20zone%20converter%20for%20remote%20teams!&url=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-twitter" aria-label="Share on Twitter">&#120143;</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin" aria-label="Share on LinkedIn">in</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-facebook" aria-label="Share on Facebook">f</a>
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20time%20zone%20converter%20for%20remote%20teams!%20https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-whatsapp" aria-label="Share on WhatsApp">&#9742;</a>
+            <button class="share-btn share-copy-link" id="share-copy-link" aria-label="Copy link">&#128279;</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -237,12 +272,14 @@
           <a href="/">Home</a>
           <a href="/about.html">About Us</a>
           <a href="/how-to-use.html">How to Use & FAQ</a>
+          <a href="/time-zones.html">Time Zones</a>
           <a href="/privacy.html">Privacy Policy</a>
           <a href="/terms.html">Terms of Service</a>
         </div>
         <div class="footer-bottom">
           <div class="visitor-counter" id="visitor-counter" aria-label="Visitor count"></div>
-          <p class="copyright">&copy; 2025 GlobalTime Sync. All rights reserved.</p>
+          <p class="copyright">&copy; 2026 GlobalTime Sync. All rights reserved.</p>
+          <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" aria-label="Send feedback">Suggestions? Let us know</a>
         </div>
       </div>
       <!-- Footer Ad Slot (Google AdSense) -->
@@ -254,7 +291,26 @@
     </div>
   </footer>
 
+  <!-- Floating Feedback Button -->
+  <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback&body=Hi%2C%20I%20have%20a%20suggestion%20for%20GlobalTime%20Sync%3A%0A%0A" class="floating-feedback" aria-label="Send feedback" title="Send us feedback">
+    <span aria-hidden="true">&#9993;</span>
+  </a>
+
   <script src="ads-config.js"></script>
   <script src="app.js"></script>
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function() {});
+    }
+    // Copy link button
+    document.getElementById('share-copy-link').addEventListener('click', function() {
+      navigator.clipboard.writeText('https://globaltime-sync.vercel.app').then(function() {
+        var btn = document.getElementById('share-copy-link');
+        btn.textContent = '\u2713';
+        setTimeout(function() { btn.innerHTML = '&#128279;'; }, 2000);
+      });
+    });
+  </script>
 </body>
 </html>

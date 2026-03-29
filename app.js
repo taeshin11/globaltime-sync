@@ -280,6 +280,7 @@
     citySearchInput.dataset.selectedIana = '';
     renderCities();
     updateMeetingBtnState();
+    saveStateToURL();
   }
 
   function removeCity(iana) {
@@ -287,6 +288,7 @@
     renderCities();
     updateMeetingBtnState();
     meetingResultsEl.innerHTML = '';
+    saveStateToURL();
   }
 
   function updateMeetingBtnState() {
@@ -575,6 +577,7 @@
           <ul class="result-city-times">${cityTimesHtml}</ul>
           <div class="result-actions">
             <button class="btn btn-sm btn-copy" data-copy="${copyText.replace(/"/g, '&quot;')}" aria-live="polite">Copy to clipboard</button>
+            <button class="btn btn-sm btn-share-result" data-share-text="${copyText.replace(/"/g, '&quot;')}">Share</button>
           </div>
         </div>`;
     }).join('');
@@ -674,6 +677,71 @@
     ];
   }
 
+  // --- URL State: Shareable Links ---
+  function saveStateToURL() {
+    if (cities.length === 0) {
+      history.replaceState(null, '', window.location.pathname);
+      return;
+    }
+    const params = new URLSearchParams();
+    params.set('cities', cities.map(c => c.iana).join(','));
+    history.replaceState(null, '', '?' + params.toString());
+  }
+
+  function loadStateFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const citiesParam = params.get('cities');
+    if (citiesParam) {
+      const ianaList = citiesParam.split(',').filter(Boolean);
+      ianaList.forEach(iana => {
+        if (cities.length < MAX_CITIES && !cities.some(c => c.iana === iana)) {
+          const tzData = allTimezones.find(t => t.iana === iana);
+          if (tzData) {
+            cities.push({
+              iana: iana,
+              label: formatTzLabel(iana),
+              workStart: DEFAULT_WORK_START,
+              workEnd: DEFAULT_WORK_END
+            });
+          }
+        }
+      });
+      if (cities.length > 0) {
+        renderCities();
+        updateMeetingBtnState();
+      }
+    }
+  }
+
+  // Patch addCity & removeCity to update URL
+  const origOnAddCity = onAddCity;
+  const origRemoveCity = removeCity;
+
+  // --- Web Share API for meeting results ---
+  function addShareResultsButton() {
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.btn-share-result');
+      if (!btn) return;
+      const text = btn.dataset.shareText;
+      if (navigator.share) {
+        navigator.share({
+          title: 'GlobalTime Sync — Meeting Time',
+          text: text,
+          url: window.location.href
+        }).catch(function() {});
+      } else {
+        navigator.clipboard.writeText(text + '\n' + window.location.href).then(function() {
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = 'Share'; }, 2000);
+        });
+      }
+    });
+  }
+
   // --- Start ---
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', function() {
+    init();
+    loadStateFromURL();
+    addShareResultsButton();
+  });
 })();
