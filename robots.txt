@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://globaltime-sync.vercel.app/sitemap.xml
+
+# Crawl-delay for polite bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /

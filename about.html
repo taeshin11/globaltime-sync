@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,14 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#6C9A8B">
   <link rel="stylesheet" href="style.css">
+  <link rel="alternate" hreflang="en" href="https://globaltime-sync.vercel.app/about.html?lang=en">
+  <link rel="alternate" hreflang="ko" href="https://globaltime-sync.vercel.app/about.html?lang=ko">
+  <link rel="alternate" hreflang="ja" href="https://globaltime-sync.vercel.app/about.html?lang=ja">
+  <link rel="alternate" hreflang="zh" href="https://globaltime-sync.vercel.app/about.html?lang=zh">
+  <link rel="alternate" hreflang="es" href="https://globaltime-sync.vercel.app/about.html?lang=es">
+  <link rel="alternate" hreflang="fr" href="https://globaltime-sync.vercel.app/about.html?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://globaltime-sync.vercel.app/about.html?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://globaltime-sync.vercel.app/about.html">
 </head>
 <body>
   <header class="site-header">
@@ -48,10 +56,10 @@
           </h1>
         </a>
         <nav class="site-nav" aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about.html" aria-current="page">About</a>
-          <a href="/how-to-use.html">How to Use</a>
-          <a href="/time-zones.html">Time Zones</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/about.html" aria-current="page" data-i18n="nav.about">About</a>
+          <a href="/how-to-use.html" data-i18n="nav.howto">How to Use</a>
+          <a href="/time-zones.html" data-i18n="nav.timezones">Time Zones</a>
         </nav>
       </div>
     </div>
@@ -109,6 +117,7 @@
         <section class="content-section">
           <h3>Get in Touch</h3>
           <p>Have feedback, feature requests, or found a bug? We'd love to hear from you. GlobalTime Sync is an actively maintained project, and user feedback directly shapes what we build next.</p>
+          <p>Email us at <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback">taeshinkim11@gmail.com</a> or use the feedback button on any page.</p>
         </section>
       </div>
     </article>
@@ -125,9 +134,10 @@
           <a href="/terms.html">Terms of Service</a>
         </div>
         <p class="copyright">&copy; 2026 GlobalTime Sync. All rights reserved.</p>
-        <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link">Suggestions? Let us know</a>
+        <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" data-i18n="footer.feedback">Suggestions? Let us know</a>
       </div>
     </div>
   </footer>
+  <script src="i18n.js"></script>
 </body>
 </html>

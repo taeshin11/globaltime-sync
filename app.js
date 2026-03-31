@@ -260,12 +260,12 @@
     if (!iana) return;
 
     if (cities.length >= MAX_CITIES) {
-      showSearchError('Maximum of ' + MAX_CITIES + ' cities allowed.');
+      showSearchError(window.GTS_i18n ? window.GTS_i18n.t('dashboard.maxCities') : 'Maximum of ' + MAX_CITIES + ' cities allowed.');
       return;
     }
 
     if (cities.some(c => c.iana === iana)) {
-      showSearchError('This city is already added.');
+      showSearchError(window.GTS_i18n ? window.GTS_i18n.t('dashboard.duplicate') : 'This city is already added.');
       return;
     }
 
@@ -338,9 +338,9 @@
             <button class="btn btn-danger" onclick="window.__removeCity('${city.iana}')" aria-label="Remove ${city.label}">✕</button>
           </div>
           <div class="working-hours-controls">
-            <label>Work hours:</label>
+            <label>${window.GTS_i18n ? window.GTS_i18n.t('meeting.workHours') : 'Work hours:'}</label>
             <input type="time" value="${city.workStart}" data-field="workStart" data-city-index="${index}" aria-label="Work start time for ${city.label}">
-            <span>to</span>
+            <span>${window.GTS_i18n ? window.GTS_i18n.t('meeting.to') : 'to'}</span>
             <input type="time" value="${city.workEnd}" data-field="workEnd" data-city-index="${index}" aria-label="Work end time for ${city.label}">
           </div>
           <div class="timeline-container">
@@ -550,25 +550,30 @@
     return String(h % 24).padStart(2, '0') + ':00';
   }
 
+  function _t(key, fallback) {
+    return window.GTS_i18n ? window.GTS_i18n.t(key) : fallback;
+  }
+
   function renderMeetingResults(windows) {
     if (windows.length === 0) {
       meetingResultsEl.innerHTML = `
         <div class="no-overlap-msg">
-          No overlapping working hours found across all selected cities.
-          Try adjusting working hours or reducing the number of cities.
+          ${_t('meeting.noOverlap', 'No overlapping working hours found across all selected cities. Try adjusting working hours or reducing the number of cities.')}
         </div>`;
       return;
     }
 
     meetingResultsEl.innerHTML = windows.map((win, i) => {
       const quality = win.duration >= 4 ? 'perfect' : win.duration >= 2 ? 'limited' : 'none';
-      const qualityLabel = win.duration >= 4 ? 'Perfect overlap' : win.duration >= 2 ? 'Limited window' : 'Tight window';
+      const qualityLabel = win.duration >= 4 ? _t('meeting.perfect', 'Perfect overlap') : win.duration >= 2 ? _t('meeting.limited', 'Limited window') : _t('meeting.tight', 'Tight window');
 
       const cityTimesHtml = win.localTimes.map(lt =>
         `<li><strong>${lt.city}:</strong> ${lt.start} – ${lt.end}</li>`
       ).join('');
 
       const copyText = win.localTimes.map(lt => `${lt.city}: ${lt.start} \u2013 ${lt.end}`).join('\n');
+      const copyLabel = _t('meeting.copy', 'Copy to clipboard');
+      const shareLabel = _t('meeting.share', 'Share');
 
       return `
         <div class="meeting-result-card">
@@ -576,8 +581,8 @@
           <div class="result-time-range">UTC ${formatHour(win.utcStart)} – ${formatHour(win.utcEnd)}</div>
           <ul class="result-city-times">${cityTimesHtml}</ul>
           <div class="result-actions">
-            <button class="btn btn-sm btn-copy" data-copy="${copyText.replace(/"/g, '&quot;')}" aria-live="polite">Copy to clipboard</button>
-            <button class="btn btn-sm btn-share-result" data-share-text="${copyText.replace(/"/g, '&quot;')}">Share</button>
+            <button class="btn btn-sm btn-copy" data-copy="${copyText.replace(/"/g, '&quot;')}" aria-live="polite">${copyLabel}</button>
+            <button class="btn btn-sm btn-share-result" data-share-text="${copyText.replace(/"/g, '&quot;')}">${shareLabel}</button>
           </div>
         </div>`;
     }).join('');
@@ -588,11 +593,11 @@
     const btn = e.target.closest('[data-copy]');
     if (!btn) return;
     navigator.clipboard.writeText(btn.dataset.copy).then(() => {
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+      btn.textContent = _t('meeting.copied', 'Copied!');
+      setTimeout(() => { btn.textContent = _t('meeting.copy', 'Copy to clipboard'); }, 2000);
     }).catch(() => {
       btn.textContent = 'Failed';
-      setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+      setTimeout(() => { btn.textContent = _t('meeting.copy', 'Copy to clipboard'); }, 2000);
     });
   });
 

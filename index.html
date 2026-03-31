@@ -1,27 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler</title>
   <meta name="description" content="Compare time zones across cities instantly. Find the best meeting time for your global team. Free, no sign-up required.">
-  <meta name="keywords" content="time zone converter, meeting scheduler, world clock, time zone comparison, remote team tools, global meeting planner">
+  <meta name="keywords" content="time zone converter, meeting scheduler, world clock, time zone comparison, remote team tools, global meeting planner, timezone converter, 시간대 변환, タイムゾーン変換, 时区转换, convertidor zona horaria, convertisseur fuseau horaire, Zeitzonen Konverter">
   <meta name="author" content="GlobalTime Sync">
   <link rel="canonical" href="https://globaltime-sync.vercel.app">
+
+  <!-- Hreflang for international SEO -->
+  <link rel="alternate" hreflang="en" href="https://globaltime-sync.vercel.app/?lang=en">
+  <link rel="alternate" hreflang="ko" href="https://globaltime-sync.vercel.app/?lang=ko">
+  <link rel="alternate" hreflang="ja" href="https://globaltime-sync.vercel.app/?lang=ja">
+  <link rel="alternate" hreflang="zh" href="https://globaltime-sync.vercel.app/?lang=zh">
+  <link rel="alternate" hreflang="es" href="https://globaltime-sync.vercel.app/?lang=es">
+  <link rel="alternate" hreflang="fr" href="https://globaltime-sync.vercel.app/?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://globaltime-sync.vercel.app/?lang=de">
+  <link rel="alternate" hreflang="pt" href="https://globaltime-sync.vercel.app/?lang=pt">
+  <link rel="alternate" hreflang="hi" href="https://globaltime-sync.vercel.app/?lang=hi">
+  <link rel="alternate" hreflang="ar" href="https://globaltime-sync.vercel.app/?lang=ar">
+  <link rel="alternate" hreflang="ru" href="https://globaltime-sync.vercel.app/?lang=ru">
+  <link rel="alternate" hreflang="tr" href="https://globaltime-sync.vercel.app/?lang=tr">
+  <link rel="alternate" hreflang="x-default" href="https://globaltime-sync.vercel.app">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler">
   <meta property="og:description" content="Compare time zones across cities instantly. Find the best meeting time for your global team. Free, no sign-up required.">
   <meta property="og:image" content="https://globaltime-sync.vercel.app/api/og">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://globaltime-sync.vercel.app">
   <meta property="og:site_name" content="GlobalTime Sync">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ko_KR">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="tr_TR">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GlobalTime Sync — Free Time Zone Converter & Meeting Scheduler">
   <meta name="twitter:description" content="Compare time zones across cities instantly. Find the best meeting time for your global team.">
   <meta name="twitter:image" content="https://globaltime-sync.vercel.app/api/og">
+
+  <!-- Additional SEO meta -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -45,6 +77,7 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="style.css" as="style">
   <link rel="preload" href="app.js" as="script">
+  <link rel="preload" href="i18n.js" as="script">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
@@ -55,17 +88,36 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "GlobalTime Sync",
-    "alternateName": "Time Zone Converter",
+    "alternateName": ["Time Zone Converter", "시간대 변환기", "タイムゾーン変換", "时区转换器", "Convertidor de Zonas Horarias"],
     "url": "https://globaltime-sync.vercel.app",
     "description": "A free, responsive web dashboard that lets remote teams compare multiple time zones at a glance and find the best overlapping meeting window.",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Any",
+    "inLanguage": ["en", "ko", "ja", "zh", "es", "fr", "de", "pt", "hi", "ar", "ru", "tr"],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "browserRequirements": "Requires a modern browser with JavaScript enabled"
+    "browserRequirements": "Requires a modern browser with JavaScript enabled",
+    "featureList": [
+      "Compare up to 10 time zones simultaneously",
+      "Live clocks with seconds updating in real-time",
+      "24-hour visual timeline bars",
+      "Meeting overlap finder algorithm",
+      "Adjustable working hours per city",
+      "Shareable URLs",
+      "Copy meeting results to clipboard",
+      "Available in 12 languages",
+      "Works offline (PWA)",
+      "Mobile-responsive design"
+    ],
+    "screenshot": "https://globaltime-sync.vercel.app/api/og",
+    "softwareVersion": "2.0",
+    "author": {
+      "@type": "Organization",
+      "name": "GlobalTime Sync"
+    }
   }
   </script>
 
@@ -122,6 +174,22 @@
           "@type": "Answer",
           "text": "Yes! After finding the best meeting time, you can use the copy-to-clipboard button to copy the results and share them with your team via email, chat, or any messaging app."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages does GlobalTime Sync support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GlobalTime Sync is available in 12 languages: English, Korean, Japanese, Chinese, Spanish, French, German, Portuguese, Hindi, Arabic, Russian, and Turkish. The language is automatically detected from your browser settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does GlobalTime Sync work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! GlobalTime Sync is a Progressive Web App (PWA) that can be installed on your device and works offline. All core features including time zone comparison and meeting scheduling work without an internet connection."
+        }
       }
     ]
   }
@@ -135,18 +203,32 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://globaltime-sync.vercel.app/" },
       { "@type": "ListItem", "position": 2, "name": "About", "item": "https://globaltime-sync.vercel.app/about.html" },
-      { "@type": "ListItem", "position": 3, "name": "How to Use", "item": "https://globaltime-sync.vercel.app/how-to-use.html" }
+      { "@type": "ListItem", "position": 3, "name": "How to Use", "item": "https://globaltime-sync.vercel.app/how-to-use.html" },
+      { "@type": "ListItem", "position": 4, "name": "Time Zones", "item": "https://globaltime-sync.vercel.app/time-zones.html" }
     ]
+  }
+  </script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GlobalTime Sync",
+    "url": "https://globaltime-sync.vercel.app",
+    "logo": "https://globaltime-sync.vercel.app/favicon.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "taeshinkim11@gmail.com",
+      "contactType": "customer support"
+    },
+    "sameAs": []
   }
   </script>
 </head>
 <body>
   <!-- Top Banner Ad (Adsterra 728x90 desktop / 320x50 mobile) -->
-  <!-- ADSTERRA_BANNER_AD -->
-  <div class="ad-container ad-banner" id="adsterra-banner">
-    <!-- Adsterra banner ad loaded dynamically by ads-config.js -->
-    <!-- To activate: replace ADSTERRA_BANNER_KEY in ads-config.js with your real key -->
-  </div>
+  <div class="ad-container ad-banner" id="adsterra-banner"></div>
 
   <header class="site-header">
     <div class="container">
@@ -155,12 +237,12 @@
           <span class="logo-icon" aria-hidden="true">&#127760;</span>
           GlobalTime Sync
         </h1>
-        <p class="tagline">Compare time zones instantly. Schedule meetings effortlessly.</p>
+        <p class="tagline" data-i18n="tagline">Compare time zones instantly. Schedule meetings effortlessly.</p>
         <nav class="site-nav" aria-label="Main navigation">
-          <a href="/" aria-current="page">Home</a>
-          <a href="/about.html">About</a>
-          <a href="/how-to-use.html">How to Use</a>
-          <a href="/time-zones.html">Time Zones</a>
+          <a href="/" aria-current="page" data-i18n="nav.home">Home</a>
+          <a href="/about.html" data-i18n="nav.about">About</a>
+          <a href="/how-to-use.html" data-i18n="nav.howto">How to Use</a>
+          <a href="/time-zones.html" data-i18n="nav.timezones">Time Zones</a>
         </nav>
       </div>
     </div>
@@ -170,15 +252,17 @@
     <!-- Hero Section -->
     <section class="hero" aria-label="Introduction">
       <div class="container">
-        <h2 class="hero-title">Find the Perfect Meeting Time Across Time Zones</h2>
-        <p class="hero-description">Add cities where your team is located, see live clocks side by side, and discover the best overlapping hours for your next meeting — all for free.</p>
+        <h2 class="hero-title" data-i18n="hero.title">Find the Perfect Meeting Time Across Time Zones</h2>
+        <p class="hero-description" data-i18n="hero.desc">Add cities where your team is located, see live clocks side by side, and discover the best overlapping hours for your next meeting — all for free.</p>
         <div class="social-share" aria-label="Share this tool">
-          <span class="share-label">Share with your team:</span>
+          <span class="share-label" data-i18n="hero.share">Share with your team:</span>
           <div class="share-buttons">
             <a href="https://twitter.com/intent/tweet?text=Found%20this%20awesome%20free%20time%20zone%20converter%20for%20remote%20teams!&url=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-twitter" aria-label="Share on Twitter">&#120143;</a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-linkedin" aria-label="Share on LinkedIn">in</a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-facebook" aria-label="Share on Facebook">f</a>
             <a href="https://wa.me/?text=Check%20out%20this%20free%20time%20zone%20converter%20for%20remote%20teams!%20https://globaltime-sync.vercel.app" target="_blank" rel="noopener noreferrer" class="share-btn share-whatsapp" aria-label="Share on WhatsApp">&#9742;</a>
+            <a href="https://t.me/share/url?url=https://globaltime-sync.vercel.app&text=Free%20time%20zone%20converter%20for%20remote%20teams!" target="_blank" rel="noopener noreferrer" class="share-btn share-telegram" aria-label="Share on Telegram">&#9993;</a>
+            <a href="https://www.reddit.com/submit?url=https://globaltime-sync.vercel.app&title=Free%20Time%20Zone%20Converter%20%26%20Meeting%20Scheduler%20for%20Remote%20Teams" target="_blank" rel="noopener noreferrer" class="share-btn share-reddit" aria-label="Share on Reddit">R</a>
             <button class="share-btn share-copy-link" id="share-copy-link" aria-label="Copy link">&#128279;</button>
           </div>
         </div>
@@ -189,34 +273,33 @@
     <section class="dashboard" aria-label="Time Zone Dashboard">
       <div class="container">
         <div class="dashboard-header">
-          <h2 class="section-title">Time Zone Dashboard</h2>
+          <h2 class="section-title" data-i18n="dashboard.title">Time Zone Dashboard</h2>
           <div class="city-selector">
             <div class="search-wrapper">
               <input
                 type="text"
                 id="city-search"
                 class="city-search-input"
+                data-i18n="dashboard.search"
                 placeholder="Search for a city or timezone..."
                 autocomplete="off"
                 aria-label="Search for a city or timezone"
               >
               <ul id="city-dropdown" class="city-dropdown" role="listbox" aria-label="City suggestions"></ul>
             </div>
-            <button id="add-city-btn" class="btn btn-primary">
+            <button id="add-city-btn" class="btn btn-primary" data-i18n="dashboard.addCity">
               + Add City
             </button>
           </div>
         </div>
 
-        <div id="city-list" class="city-list" aria-live="polite">
-          <!-- City rows will be inserted here by JS -->
-        </div>
+        <div id="city-list" class="city-list" aria-live="polite"></div>
 
         <!-- Meeting Overlap Finder -->
         <div class="meeting-finder" id="meeting-finder">
-          <h3 class="subsection-title">Meeting Overlap Finder</h3>
-          <p class="meeting-finder-hint">Add at least 2 cities, then find the best meeting time.</p>
-          <button id="find-meeting-btn" class="btn btn-accent" disabled>
+          <h3 class="subsection-title" data-i18n="meeting.title">Meeting Overlap Finder</h3>
+          <p class="meeting-finder-hint" data-i18n="meeting.hint">Add at least 2 cities, then find the best meeting time.</p>
+          <button id="find-meeting-btn" class="btn btn-accent" disabled data-i18n="meeting.findBtn">
             Find Best Meeting Time
           </button>
           <div id="meeting-results" class="meeting-results" aria-live="polite"></div>
@@ -225,40 +308,36 @@
     </section>
 
     <!-- Inline Ad Slot (Adsterra Native Banner) -->
-    <!-- ADSTERRA_NATIVE_AD -->
-    <div class="ad-container ad-native" id="adsterra-native">
-      <!-- Adsterra native ad loaded dynamically by ads-config.js -->
-      <!-- To activate: replace ADSTERRA_NATIVE_KEY in ads-config.js with your real key -->
-    </div>
+    <div class="ad-container ad-native" id="adsterra-native"></div>
 
     <!-- FAQ Section -->
     <section class="faq" aria-label="Frequently Asked Questions">
       <div class="container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
+        <h2 class="section-title" data-i18n="faq.title">Frequently Asked Questions</h2>
         <div class="faq-list">
           <details class="faq-item" open>
-            <summary class="faq-question">How does GlobalTime Sync work?</summary>
-            <p class="faq-answer">GlobalTime Sync uses your browser's built-in Intl API to display accurate time zone data for any city in the world. Simply search and add cities to see their current times side by side on an interactive 24-hour timeline.</p>
+            <summary class="faq-question" data-i18n="faq.q1">How does GlobalTime Sync work?</summary>
+            <p class="faq-answer" data-i18n="faq.a1">GlobalTime Sync uses your browser's built-in Intl API to display accurate time zone data for any city in the world. Simply search and add cities to see their current times side by side on an interactive 24-hour timeline.</p>
           </details>
           <details class="faq-item">
-            <summary class="faq-question">Is GlobalTime Sync free to use?</summary>
-            <p class="faq-answer">Yes, GlobalTime Sync is completely free. There are no sign-ups, subscriptions, or hidden fees. All features are available to everyone.</p>
+            <summary class="faq-question" data-i18n="faq.q2">Is GlobalTime Sync free to use?</summary>
+            <p class="faq-answer" data-i18n="faq.a2">Yes, GlobalTime Sync is completely free. There are no sign-ups, subscriptions, or hidden fees. All features are available to everyone.</p>
           </details>
           <details class="faq-item">
-            <summary class="faq-question">How do I find the best meeting time across time zones?</summary>
-            <p class="faq-answer">Add all the cities where your team members are located, adjust working hours if needed, then click "Find Best Meeting Time". The tool will calculate overlapping working hours and suggest the best windows.</p>
+            <summary class="faq-question" data-i18n="faq.q3">How do I find the best meeting time across time zones?</summary>
+            <p class="faq-answer" data-i18n="faq.a3">Add all the cities where your team members are located, adjust working hours if needed, then click "Find Best Meeting Time". The tool will calculate overlapping working hours and suggest the best windows.</p>
           </details>
           <details class="faq-item">
-            <summary class="faq-question">How many cities can I compare at once?</summary>
-            <p class="faq-answer">You can compare up to 10 cities simultaneously. Each city shows a live clock with hours, minutes, seconds, date, and UTC offset, plus a visual 24-hour timeline bar.</p>
+            <summary class="faq-question" data-i18n="faq.q4">How many cities can I compare at once?</summary>
+            <p class="faq-answer" data-i18n="faq.a4">You can compare up to 10 cities simultaneously. Each city shows a live clock with hours, minutes, seconds, date, and UTC offset, plus a visual 24-hour timeline bar.</p>
           </details>
           <details class="faq-item">
-            <summary class="faq-question">Does GlobalTime Sync account for Daylight Saving Time?</summary>
-            <p class="faq-answer">Yes. GlobalTime Sync uses the IANA time zone database through your browser's Intl API, which automatically handles Daylight Saving Time transitions for all supported time zones.</p>
+            <summary class="faq-question" data-i18n="faq.q5">Does GlobalTime Sync account for Daylight Saving Time?</summary>
+            <p class="faq-answer" data-i18n="faq.a5">Yes. GlobalTime Sync uses the IANA time zone database through your browser's Intl API, which automatically handles Daylight Saving Time transitions for all supported time zones.</p>
           </details>
           <details class="faq-item">
-            <summary class="faq-question">Can I share my meeting time results?</summary>
-            <p class="faq-answer">Yes! After finding the best meeting time, you can use the copy-to-clipboard button to copy the results and share them with your team via email, chat, or any messaging app.</p>
+            <summary class="faq-question" data-i18n="faq.q6">Can I share my meeting time results?</summary>
+            <p class="faq-answer" data-i18n="faq.a6">Yes! After finding the best meeting time, you can use the copy-to-clipboard button to copy the results and share them with your team via email, chat, or any messaging app.</p>
           </details>
         </div>
       </div>
@@ -269,35 +348,28 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/about.html">About Us</a>
-          <a href="/how-to-use.html">How to Use & FAQ</a>
-          <a href="/time-zones.html">Time Zones</a>
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/about.html" data-i18n="footer.about">About Us</a>
+          <a href="/how-to-use.html" data-i18n="footer.howto">How to Use & FAQ</a>
+          <a href="/time-zones.html" data-i18n="nav.timezones">Time Zones</a>
+          <a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="/terms.html" data-i18n="footer.terms">Terms of Service</a>
         </div>
         <div class="footer-bottom">
           <div class="visitor-counter" id="visitor-counter" aria-label="Visitor count"></div>
-          <p class="copyright">&copy; 2026 GlobalTime Sync. All rights reserved.</p>
-          <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" aria-label="Send feedback">Suggestions? Let us know</a>
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 GlobalTime Sync. All rights reserved.</p>
+          <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" aria-label="Send feedback" data-i18n="footer.feedback">Suggestions? Let us know</a>
         </div>
       </div>
       <!-- Footer Ad Slot (Google AdSense) -->
-      <!-- ADSENSE_FOOTER_AD -->
-      <div class="ad-container ad-footer" id="adsense-footer">
-        <!-- AdSense ad loaded dynamically by ads-config.js -->
-        <!-- To activate: set adsense.enabled=true and replace publisherId in ads-config.js -->
-      </div>
+      <div class="ad-container ad-footer" id="adsense-footer"></div>
     </div>
   </footer>
 
-  <!-- Floating Feedback Button -->
-  <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback&body=Hi%2C%20I%20have%20a%20suggestion%20for%20GlobalTime%20Sync%3A%0A%0A" class="floating-feedback" aria-label="Send feedback" title="Send us feedback">
-    <span aria-hidden="true">&#9993;</span>
-  </a>
-
+  <!-- Scripts -->
   <script src="ads-config.js"></script>
   <script src="app.js"></script>
+  <script src="i18n.js"></script>
   <script>
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {

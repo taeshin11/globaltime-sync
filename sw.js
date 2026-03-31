@@ -1,14 +1,16 @@
-const CACHE_NAME = 'gts-v1';
+const CACHE_NAME = 'gts-v2';
 const ASSETS = [
   '/',
   '/style.css',
   '/app.js',
+  '/i18n.js',
   '/ads-config.js',
   '/favicon.svg',
   '/favicon.ico',
   '/manifest.json',
   '/about.html',
   '/how-to-use.html',
+  '/time-zones.html',
   '/privacy.html',
   '/terms.html'
 ];
