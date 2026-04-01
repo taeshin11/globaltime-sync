@@ -7,6 +7,7 @@
   <meta name="description" content="Learn about GlobalTime Sync, a free time zone converter and meeting scheduler built for remote teams working across multiple time zones.">
   <meta name="keywords" content="about GlobalTime Sync, time zone converter, meeting scheduler, remote team tools, world clock, free timezone tool">
   <meta name="author" content="GlobalTime Sync">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://globaltime-sync.vercel.app/about.html">
 
   <!-- Open Graph -->
@@ -44,7 +45,43 @@
   <link rel="alternate" hreflang="es" href="https://globaltime-sync.vercel.app/about.html?lang=es">
   <link rel="alternate" hreflang="fr" href="https://globaltime-sync.vercel.app/about.html?lang=fr">
   <link rel="alternate" hreflang="de" href="https://globaltime-sync.vercel.app/about.html?lang=de">
+  <link rel="alternate" hreflang="pt" href="https://globaltime-sync.vercel.app/about.html?lang=pt">
   <link rel="alternate" hreflang="x-default" href="https://globaltime-sync.vercel.app/about.html">
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://globaltime-sync.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://globaltime-sync.vercel.app/about.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: AboutPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About GlobalTime Sync",
+    "description": "Learn about GlobalTime Sync, a free time zone converter and meeting scheduler built for remote teams working across multiple time zones.",
+    "url": "https://globaltime-sync.vercel.app/about.html",
+    "mainEntity": {
+      "@type": "WebApplication",
+      "name": "GlobalTime Sync",
+      "url": "https://globaltime-sync.vercel.app",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -128,14 +165,17 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/about.html">About Us</a>
-          <a href="/how-to-use.html">How to Use & FAQ</a>
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/about.html" data-i18n="footer.about">About Us</a>
+          <a href="/how-to-use.html" data-i18n="footer.howto">How to Use & FAQ</a>
+          <a href="/time-zones.html" data-i18n="nav.timezones">Time Zones</a>
+          <a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="/terms.html" data-i18n="footer.terms">Terms of Service</a>
         </div>
-        <p class="copyright">&copy; 2026 GlobalTime Sync. All rights reserved.</p>
-        <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" data-i18n="footer.feedback">Suggestions? Let us know</a>
+        <div class="footer-bottom">
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2025 GlobalTime Sync. All rights reserved.</p>
+          <a href="mailto:taeshinkim11@gmail.com?subject=GlobalTime%20Sync%20Feedback" class="feedback-link" aria-label="Send feedback" data-i18n="footer.feedback">Suggestions? Let us know</a>
+        </div>
       </div>
     </div>
   </footer>
