@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(html|js|css|json|xml|txt|md\\)$')",
+      "Bash(npx terser:*)",
+      "Bash(npx clean-css-cli:*)",
+      "Bash(ls -la *.min.js *.min.css)",
+      "WebFetch(domain:globaltime-sync.vercel.app)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(curl -sI \"https://globaltime-sync.vercel.app/\")",
+      "Bash(curl -s \"https://globaltime-sync.vercel.app/\")"
+    ]
+  }
+}

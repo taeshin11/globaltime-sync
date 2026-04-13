@@ -36,27 +36,6 @@ export default async function handler(req, res) {
   data.today++;
   saveData(data);
 
-  // Also try to sync with a free external counter for cross-instance persistence
-  let externalTotal = null;
-  try {
-    const extRes = await fetch('https://api.countapi.xyz/hit/globaltime-sync.vercel.app/visits', {
-      signal: AbortSignal.timeout(2000)
-    });
-    if (extRes.ok) {
-      const extData = await extRes.json();
-      if (extData.value) {
-        externalTotal = extData.value;
-        // Use external total if it's higher (more accurate)
-        if (externalTotal > data.total) {
-          data.total = externalTotal;
-          saveData(data);
-        }
-      }
-    }
-  } catch {
-    // External counter unavailable, use local count
-  }
-
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-cache, no-store');
   res.status(200).json({
